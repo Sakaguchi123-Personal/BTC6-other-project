@@ -44,6 +44,7 @@ export const NavigateBar = ({ className, select }: Props) => {
               onClick={() => {
                 navigate(`/${obj.tab}`);
               }}
+              key={obj.tab}
             >
               {obj.icon}
               <Text size="xs">{obj.tab}</Text>
