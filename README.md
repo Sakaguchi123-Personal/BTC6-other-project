@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/badge/postgresql-white.svg?logo=postgresql&style=for-the-badge">
 </p>
 <p>
-  <img src="https://img.shields.io/badge/react-blue-brack.svg?logo=react&style=for-the-badge">
+  <img src="https://img.shields.io/badge/react-blue.svg?logo=react&style=for-the-badge">
   <img src="https://img.shields.io/badge/TypeScript-white.svg?logo=TypeScript&style=for-the-badge">
   <img src="https://img.shields.io/badge/vite-yellow.svg?logo=vite&style=for-the-badge">
   <img src="https://img.shields.io/badge/mantine-white.svg?logo=mantine&style=for-the-badge">
