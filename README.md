@@ -1,4 +1,4 @@
-# BTC-6 ソロ MVP
+# 多言語プロジェクト（BTC6）
 
 <p>
 <img src="https://img.shields.io/badge/react-blue.svg?logo=react&style=for-the-badge">
@@ -24,10 +24,12 @@ npm install
 
 環境変数 (.env ファイル)
 
-```bash
-DB_USER=
-DB_PASSWORD=
-DB_NAME='mvp_db'
+```properties
+spring.application.name=Multilingual-Projects
+spring.datasource.url=jdbc:postgresql://localhost/spring_boot_db
+spring.datasource.username=user
+spring.datasource.password=
+spring.datasource.driverClassName=org.postgresql.Driver
 ```
 
 ## コマンド一覧
@@ -39,3 +41,13 @@ DB_NAME='mvp_db'
 | migrate  | migrate の実行           |
 | seed     | seed の実行              |
 | render   | render デプロイ用        |
+
+db 作成
+createdb spring_boot_db
+
+./src/main/resources/application.properties
+↑ ファイルを開く
+
+自信の環境に合わせて編集する
+spring.datasource.username=user
+spring.datasource.password=
