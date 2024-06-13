@@ -12,3 +12,13 @@
   bottom: 15px;
   width: 90%;
 }
+
+.delete_btn {
+  vertical-align: middle;
+  margin-left: 165px;
+  align-self: flex-end;
+}
+
+.save_btn {
+  align-self: flex-end;
+}

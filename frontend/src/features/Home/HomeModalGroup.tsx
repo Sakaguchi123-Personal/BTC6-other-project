@@ -1,6 +1,7 @@
 import { Group, Input } from "@mantine/core";
 import axios from "axios";
 import { ButtonBasic, ModalTimeEdit } from "../../components";
+import styles from "./Home.module.css";
 
 type Props = {
   setStartTime: React.Dispatch<React.SetStateAction<string>>;
@@ -69,8 +70,13 @@ export const HomeModalGroup = ({
   //-----------------------------------------------------------------------------------
 
   return (
-    <Group justify="center" gap="120">
-      <ModalTimeEdit title="出勤時間編集" time={startTime} size="md">
+    <Group justify="center" gap="80">
+      <ModalTimeEdit
+        title="出勤時間編集"
+        time={startTime}
+        size="md"
+        disabled={startTimeInput === "" ? true : false}
+      >
         <Input
           value={startTimeInput}
           placeholder="時間を入力"
@@ -81,12 +87,18 @@ export const HomeModalGroup = ({
             setStartTime(startTimeInput);
             editStartTime(startTimeInput);
           }}
+          className={styles.save_btn}
         >
           SAVE
         </ButtonBasic>
       </ModalTimeEdit>
 
-      <ModalTimeEdit title="退勤時間編集" time={endTime} size="md">
+      <ModalTimeEdit
+        title="退勤時間編集"
+        time={endTime}
+        size="md"
+        disabled={endTimeInput === "" ? true : false}
+      >
         <Input
           value={endTimeInput}
           placeholder="時間を入力"
@@ -97,6 +109,7 @@ export const HomeModalGroup = ({
             setEndTime(endTimeInput);
             editEndTime(endTimeInput);
           }}
+          className={styles.save_btn}
         >
           SAVE
         </ButtonBasic>

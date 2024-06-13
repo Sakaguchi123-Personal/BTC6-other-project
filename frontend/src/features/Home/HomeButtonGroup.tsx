@@ -43,8 +43,6 @@ export const HomeButtonGroup = ({
     };
     const res = await axios.post("/api/works", body).then(res => res.data);
     setWorkRecordId(res);
-    console.log(workRecordId);
-    console.log(res);
   };
 
   //-----------------------------------------------------------------------------------

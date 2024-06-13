@@ -1,0 +1,9 @@
+.nav_bar {
+  position: fixed;
+  bottom: 15px;
+  width: 90%;
+}
+
+.text {
+  color: gray;
+}

@@ -1,4 +1,4 @@
-import { Button, Modal } from "@mantine/core";
+import { Button, Flex, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import { FaEdit } from "react-icons/fa";
@@ -8,16 +8,17 @@ type Props = {
   title: string;
   time: string;
   size?: string;
-  display?: string;
+  disabled?: boolean;
+  className?: string;
 };
 
-export const ModalTimeEdit = ({ children, title, time, size, display }: Props) => {
+export const ModalTimeEdit = ({ children, title, time, size, disabled }: Props) => {
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <>
       <Button
-        display={display}
+        disabled={disabled}
         onClick={open}
         variant={"outline"}
         m={5}
@@ -30,8 +31,10 @@ export const ModalTimeEdit = ({ children, title, time, size, display }: Props) =
         <FaEdit size={20} style={{ marginLeft: 5 }} />
       </Button>
 
-      <Modal opened={opened} onClose={close} title={title} centered>
-        {children}
+      <Modal opened={opened} onClose={close} title={title} centered display={"flex"}>
+        <Flex mih={50} gap="md" justify="center" align="center" direction="column">
+          {children}
+        </Flex>
       </Modal>
     </>
   );

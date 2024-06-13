@@ -1,4 +1,4 @@
-import { Center, Stack, Title } from "@mantine/core";
+import { Center, Flex, Stack, Title } from "@mantine/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { DrawerBottom, NavigateBar } from "../../components";
@@ -6,6 +6,7 @@ import styles from "./Home.module.css";
 
 import {
   HomeButtonGroup,
+  HomeDelete,
   HomeModalGroup,
   HomeRealtimeDisplay,
   HomeSegmentedControl,
@@ -23,7 +24,7 @@ export const Home = React.memo(() => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [startTimeInput, setStartTimeInput] = useState<string>("");
-  const [endTimeInput, setEndTimeInput] = useState<string>(endTime);
+  const [endTimeInput, setEndTimeInput] = useState<string>("");
   //-----------------------------------------------------------------------------------
   const [homeOrOffice, setHomeOrOffice] = useState("0");
   //-----------------------------------------------------------------------------------
@@ -40,11 +41,8 @@ export const Home = React.memo(() => {
     setDisplayDate(MonthDay);
   };
   //-----------------------------------------------------------------------------------
-
-  useEffect(() => {
-    (async () => {
-      dateFormat();
-
+  const dataGet = async () => {
+    if (barDisplayDate !== "") {
       const res = await axios.get(`/api/dates?date=${barDisplayDate}`).then(res => res.data);
       if (res.length > 0) {
         const data = res[0];
@@ -54,7 +52,22 @@ export const Home = React.memo(() => {
         setEndTime(data.endTime);
         setEndTimeInput(data.endTime);
         setHomeOrOffice(String(data.officeHome));
+      } else {
+        setWorkRecordId(null);
+        setStartTime("");
+        setStartTimeInput("");
+        setEndTime("");
+        setEndTimeInput("");
+        setHomeOrOffice("0");
       }
+    }
+  };
+  //-----------------------------------------------------------------------------------
+
+  useEffect(() => {
+    (async () => {
+      dateFormat();
+      dataGet();
     })();
   }, [barDisplayDate]);
 
@@ -67,11 +80,16 @@ export const Home = React.memo(() => {
         dateFormat={dateFormat}
       />
       {/* ----------------------------------------------------------------------------------- */}
-      <HomeSegmentedControl
-        homeOrOffice={homeOrOffice}
-        setHomeOrOffice={setHomeOrOffice}
-        workRecordId={workRecordId}
-      />
+      <Flex>
+        <HomeSegmentedControl
+          homeOrOffice={homeOrOffice}
+          setHomeOrOffice={setHomeOrOffice}
+          workRecordId={workRecordId}
+        />
+        {/* ----------------------------------------------------------------------------------- */}
+
+        <HomeDelete workRecordId={workRecordId} dataGet={dataGet} />
+      </Flex>
       {/* ----------------------------------------------------------------------------------- */}
       <Stack align="center" justify="center" m={"50px 0px 50px 0px"}>
         <Title order={1} m={"0px 0px 20px 0px"}>
@@ -109,7 +127,7 @@ export const Home = React.memo(() => {
 
       <Center>
         <DrawerBottom className={styles.drawer} />
-        <NavigateBar className={styles.nav_bar} />
+        <NavigateBar select="home" className={styles.nav_bar} />
       </Center>
     </>
   );

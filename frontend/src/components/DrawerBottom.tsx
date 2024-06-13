@@ -25,7 +25,13 @@ export const DrawerBottom = ({ className }: Props) => {
         離業
       </Button>
 
-      <Drawer opened={opened} onClose={close} title="離業時間" position="bottom" size={250}>
+      <Drawer
+        opened={opened}
+        onClose={close}
+        title="<未実装> 離業時間"
+        position="bottom"
+        size={250}
+      >
         <TimeEdit startTime="08:00" endTime="09:00" startTitle="離業開始" endTitle="離業終了" />
 
         <Flex gap="80" justify="center" align="center" direction="row" wrap="wrap" mt={20}>

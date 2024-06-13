@@ -1,41 +1,63 @@
 import { Group, Stack, Text } from "@mantine/core";
 import { IoCalendarSharp, IoDocumentTextSharp, IoHomeSharp, IoPersonCircle } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 type Props = {
-  className: string;
+  className?: string;
+  select: string;
 };
 
-export const NavigateBar = ({ className }: Props) => {
+export const NavigateBar = ({ className, select }: Props) => {
+  const navigate = useNavigate();
+  const navigateTab = [
+    {
+      tab: "home",
+      icon: <IoHomeSharp size={20} spacing={0} />,
+    },
+    {
+      tab: "calender",
+      icon: <IoCalendarSharp size={20} spacing={0} />,
+    },
+    {
+      tab: "request",
+      icon: <IoDocumentTextSharp size={20} spacing={0} />,
+    },
+    {
+      tab: "account",
+      icon: <IoPersonCircle size={20} spacing={0} />,
+    },
+  ];
+
   return (
-    <Sdiv className={className}>
+    <StyledDiv className={className}>
       <Group justify="space-between" p={10}>
-        <Stack justify="center" align="center" gap={5}>
-          <IoHomeSharp size={20} spacing={0} color="#ddb72d" />
-          <Text size="xs" c={"#ddb72d"}>
-            HOME
-          </Text>
-        </Stack>
-        <Stack justify="center" align="center" gap={5}>
-          <IoCalendarSharp size={20} />
+        {/* -------------------------------------------------- */}
 
-          <Text size="xs">calender</Text>
-        </Stack>
-        <Stack justify="center" align="center" gap={5}>
-          <IoDocumentTextSharp size={20} />
+        {navigateTab.map(obj => {
+          return (
+            <Stack
+              justify="center"
+              align="center"
+              gap={5}
+              c={select === obj.tab ? "#ddb72d" : ""}
+              onClick={() => {
+                navigate(`/${obj.tab}`);
+              }}
+            >
+              {obj.icon}
+              <Text size="xs">{obj.tab}</Text>
+            </Stack>
+          );
+        })}
 
-          <Text size="xs">request</Text>
-        </Stack>
-        <Stack justify="center" align="center" gap={5}>
-          <IoPersonCircle size={20} />
-          <Text size="xs">account</Text>
-        </Stack>
+        {/* -------------------------------------------------- */}
       </Group>
-    </Sdiv>
+    </StyledDiv>
   );
 };
 
-const Sdiv = styled.div`
+const StyledDiv = styled.div`
   background-color: #ededed;
   border-radius: 25px;
   padding: 5px 10px;
