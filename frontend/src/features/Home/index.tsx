@@ -1,4 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
+//まとめてエクスポート
 export * from "./HomeButtonGroup";
 export * from "./HomeDelete";
 export * from "./HomeModalGroup";

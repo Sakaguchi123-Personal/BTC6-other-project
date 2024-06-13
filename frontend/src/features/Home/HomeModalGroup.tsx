@@ -8,11 +8,11 @@ type Props = {
   setStartTimeInput: React.Dispatch<React.SetStateAction<string>>;
   setEndTime: React.Dispatch<React.SetStateAction<string>>;
   setEndTimeInput: React.Dispatch<React.SetStateAction<string>>;
+  workRecordId: null | number;
   startTime: string;
   startTimeInput: string;
   endTime: string;
   endTimeInput: string;
-  workRecordId: null | number;
 };
 
 export const HomeModalGroup = ({
@@ -20,11 +20,11 @@ export const HomeModalGroup = ({
   setStartTimeInput,
   setEndTime,
   setEndTimeInput,
+  workRecordId,
   startTime,
   startTimeInput,
   endTime,
   endTimeInput,
-  workRecordId,
 }: Props) => {
   //-----------------------------------------------------------------------------------
   //就業時間の計算

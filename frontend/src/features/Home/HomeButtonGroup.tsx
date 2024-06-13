@@ -7,13 +7,13 @@ type Props = {
   setStartTimeInput: React.Dispatch<React.SetStateAction<string>>;
   setEndTime: React.Dispatch<React.SetStateAction<string>>;
   setEndTimeInput: React.Dispatch<React.SetStateAction<string>>;
+  workRecordId: number | null;
   setWorkRecordId: React.Dispatch<React.SetStateAction<null>>;
   time: string;
-  workRecordId: number | null;
+  startTime: string;
+  endTime: string;
   barDisplayDate: string;
   homeOrOffice: string;
-  endTime: string;
-  startTime: string;
 };
 
 export const HomeButtonGroup = ({
@@ -21,13 +21,13 @@ export const HomeButtonGroup = ({
   setStartTimeInput,
   setEndTime,
   setEndTimeInput,
+  workRecordId,
   setWorkRecordId,
   time,
-  workRecordId,
+  startTime,
+  endTime,
   barDisplayDate,
   homeOrOffice,
-  endTime,
-  startTime,
 }: Props) => {
   //-----------------------------------------------------------------------------------
 

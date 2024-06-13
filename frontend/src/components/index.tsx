@@ -1,4 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
+//componentsファイルまとめてエクスポート
 export * from "./DrawerBottom";
 export * from "./NavigateBar";
 export * from "./TimeEdit";

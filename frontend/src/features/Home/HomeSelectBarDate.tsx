@@ -2,14 +2,14 @@ import React from "react";
 import { SelectBarDate } from "../../components";
 
 type Props = {
-  barDisplayDate: string;
   date: Date;
-  dateFormat: () => void;
   setDate: React.Dispatch<React.SetStateAction<Date>>;
+  dateFormat: () => void;
+  barDisplayDate: string;
 };
 
 export const HomeSelectBarDate = React.memo(
-  ({ barDisplayDate, date, dateFormat, setDate }: Props) => {
+  ({ date, setDate, dateFormat, barDisplayDate }: Props) => {
     return (
       <SelectBarDate
         title={barDisplayDate}

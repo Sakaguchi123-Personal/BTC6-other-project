@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import styles from "./Home.module.css";
 
 type Props = {
+  workRecordId: null | number;
   homeOrOffice: string;
   setHomeOrOffice: React.Dispatch<React.SetStateAction<string>>;
-  workRecordId: null | number;
 };
 
-export const HomeSegmentedControl = ({ homeOrOffice, setHomeOrOffice, workRecordId }: Props) => {
+export const HomeSegmentedControl = ({ workRecordId, homeOrOffice, setHomeOrOffice }: Props) => {
   useEffect(() => {
     (async () => {
       const body = {

@@ -14,20 +14,18 @@ import {
 } from "./index";
 
 export const Home = React.memo(() => {
+  //!state多すぎる問題(どうにかしたい)
   const [date, setDate] = useState<Date>(new Date());
   const [barDisplayDate, setBarDisplayDate] = useState<string>("");
   const [displayDate, setDisplayDate] = useState<string>("");
   const [time, setTime] = useState(
     ("00" + date.getHours()).slice(-2) + ":" + ("00" + date.getMinutes()).slice(-2)
   );
-  //-----------------------------------------------------------------------------------
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [startTimeInput, setStartTimeInput] = useState<string>("");
   const [endTimeInput, setEndTimeInput] = useState<string>("");
-  //-----------------------------------------------------------------------------------
   const [homeOrOffice, setHomeOrOffice] = useState("0");
-  //-----------------------------------------------------------------------------------
   const [workRecordId, setWorkRecordId] = useState(null);
   //-----------------------------------------------------------------------------------
 
@@ -74,17 +72,17 @@ export const Home = React.memo(() => {
   return (
     <>
       <HomeSelectBarDate
-        barDisplayDate={barDisplayDate}
         date={date}
         setDate={setDate}
         dateFormat={dateFormat}
+        barDisplayDate={barDisplayDate}
       />
       {/* ----------------------------------------------------------------------------------- */}
       <Flex>
         <HomeSegmentedControl
+          workRecordId={workRecordId}
           homeOrOffice={homeOrOffice}
           setHomeOrOffice={setHomeOrOffice}
-          workRecordId={workRecordId}
         />
         {/* ----------------------------------------------------------------------------------- */}
 
@@ -100,28 +98,28 @@ export const Home = React.memo(() => {
       {/* ----------------------------------------------------------------------------------- */}
       <HomeButtonGroup
         setStartTime={setStartTime}
-        time={time}
         setStartTimeInput={setStartTimeInput}
-        workRecordId={workRecordId}
-        setWorkRecordId={setWorkRecordId}
         setEndTime={setEndTime}
         setEndTimeInput={setEndTimeInput}
+        workRecordId={workRecordId}
+        setWorkRecordId={setWorkRecordId}
+        time={time}
+        startTime={startTime}
+        endTime={endTime}
         barDisplayDate={barDisplayDate}
         homeOrOffice={homeOrOffice}
-        endTime={endTime}
-        startTime={startTime}
       />
       {/* ----------------------------------------------------------------------------------- */}
       <HomeModalGroup
+        setStartTime={setStartTime}
+        setStartTimeInput={setStartTimeInput}
+        setEndTime={setEndTime}
+        setEndTimeInput={setEndTimeInput}
+        workRecordId={workRecordId}
         startTime={startTime}
         startTimeInput={startTimeInput}
-        setStartTimeInput={setStartTimeInput}
-        setStartTime={setStartTime}
         endTime={endTime}
         endTimeInput={endTimeInput}
-        setEndTimeInput={setEndTimeInput}
-        setEndTime={setEndTime}
-        workRecordId={workRecordId}
       />
       {/* ----------------------------------------------------------------------------------- */}
 
